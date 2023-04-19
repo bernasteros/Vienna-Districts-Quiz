@@ -17,7 +17,11 @@ show_picture(picture_path="./Maps/vienna_de15.gif")
 # CONSTANTS and initial variables
 game_on = True
 
-districts = pd.read_csv('Data/district_names.csv')
+# import districts from csv-file and put them into a data list
+# in the same time an empty list should be created for guessing.
+df = pd.read_csv('Data/district_names.csv')
+data = df.values.tolist()
+player-guess = []
 
 # TODO: Check if guess is among the 23 districts (pandas?)
 # TODO: Write correct guesses onto the map (Turtle position on right guess)

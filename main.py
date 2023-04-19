@@ -1,5 +1,5 @@
 import turtle
-import pandas
+import pandas as pd
 
 
 def show_picture(picture_path):
@@ -16,6 +16,8 @@ show_picture(picture_path="./Maps/vienna_de15.gif")
 
 # CONSTANTS and initial variables
 game_on = True
+
+districts = pd.read_csv('Data/district_names.csv')
 
 # TODO: Check if guess is among the 23 districts (pandas?)
 # TODO: Write correct guesses onto the map (Turtle position on right guess)

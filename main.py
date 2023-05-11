@@ -1,7 +1,6 @@
 import turtle
 import pandas as pd
 
-
 def show_picture(picture_path):
     """
     Diese Funktion zeigt ein beliebiges Bild auf Turtles.
@@ -53,6 +52,26 @@ def create_dict(path):
     return dict
 
 
+def export_list(dictionary, answer_list):
+    """
+    Gleicht die Gesamtliste mit den gegebenen Antworten ab.
+    Exportiert eine csv-Liste mit jenen Namen, die man nicht erraten hat.
+    :param dictionary:
+    :param answer_list:
+    :return:
+    """
+    # Convert dictionary to list
+    keys_list = list(dictionary.keys())
+
+    # Antworten und Dict-Abgleich und Löschung
+    for answer in answer_list:
+        index = keys_list.index(answer)
+        del keys_list[index]
+
+    df = pd.DataFrame(keys_list, columns=['Diese Bezirke solltest du dir nochmal einprägen:'])
+    df.to_csv('Bezirke zum Lernen.csv', index=False)
+
+
 # Screen Configuration
 screen = turtle.Screen()
 screen.title("Vienna District Quiz")
@@ -70,6 +89,10 @@ while (game_on):
                                                                         f"\nNoch {23 - len(answers)} übrig.")
     if answer_district == "":
         game_on = False
+    if answer_district == "Exit":
+        print("Viel Erfolg beim Lernen!")
+        export_list(district_dict, answers)
+        break
     elif answer_district in district_dict:
         if answer_district in answers:
             print("Oh nein, das hatten wir ja schon!")
@@ -80,6 +103,10 @@ while (game_on):
 
         # Put the right answer into a separate list for reference
         answers.append(answer_district)
+
+        if len(answers) == 23:
+            print("Gute Arbeit! Alles gefunden!")
+            break
     else:
         print(answer_district.title())
 

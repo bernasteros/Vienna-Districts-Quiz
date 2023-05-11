@@ -21,6 +21,7 @@ game_on = True
 df = pd.read_csv('Data/district_names.csv')
 data = df.values.tolist()
 
+# convert the raw list into a dictionary with districtname + coordinates
 district_dict = {}
 for district in data:
     name = district[1]

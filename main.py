@@ -1,7 +1,6 @@
 import turtle
 import pandas as pd
 
-
 def show_picture(picture_path):
     screen.addshape(picture_path)
     turtle.shape(picture_path)
@@ -21,7 +20,14 @@ game_on = True
 # in the same time an empty list should be created for guessing.
 df = pd.read_csv('Data/district_names.csv')
 data = df.values.tolist()
-player-guess = []
+
+district_dict = {}
+for district in data:
+    name = district[1]
+    coords = [district[2], district[3]]
+    district_dict[name] = coords
+
+print (district_dict)
 
 # TODO: Check if guess is among the 23 districts (pandas?)
 # TODO: Write correct guesses onto the map (Turtle position on right guess)

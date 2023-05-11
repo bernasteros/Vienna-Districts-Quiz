@@ -57,8 +57,6 @@ while (game_on):
     else:
         print(answer_district.title())
 
-# TODO: Write correct guesses onto the map (Turtle position on right guess)
-# TODO: Use a loop that allows continuous guessing. (While gameOn)
 # TODO: Record the correct guesses in a list (create entry, no doubles allowed)
 # TODO: Keep track of the score (count the correct entries)
 

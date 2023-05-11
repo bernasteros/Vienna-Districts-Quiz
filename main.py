@@ -11,7 +11,7 @@ def show_picture(picture_path):
     turtle.shape(picture_path)
 
 
-def write_district(dict_entry, answer):
+def print_entry(dict_entry, answer):
     """
     Aus einer Bezirks oder Ortsliste im CSV-Format wird ein Dictionary gebastelt.
     :param dict_entry:
@@ -76,7 +76,7 @@ while (game_on):
             continue
 
         # Insert the right guess onto the map
-        write_district(district_dict, answer_district)
+        print_entry(district_dict, answer_district)
 
         # Put the right answer into a separate list for reference
         answers.append(answer_district)

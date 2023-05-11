@@ -28,20 +28,40 @@ for district in data:
     coords = [district[2], district[3]]
     district_dict[name] = coords
 
-print (district_dict)
+# Todo: Check if guess is among the 23 districts
 
-# TODO: Check if guess is among the 23 districts (pandas?)
+while (game_on):
+    answer_district = screen.textinput(title="Rate die Bezirke", prompt="Bitte gib einen Bezirk ein!")
+    if answer_district == "":
+        game_on = False
+    elif answer_district in district_dict:
+        # Create a turtle object
+        t = turtle.Turtle()
+        # Hide the turtle
+        t.ht()
+        # Lift the pen up
+        t.penup()
+
+        # Move the turtle to the desired position
+        x = district_dict[answer_district][0]
+        y = district_dict[answer_district][1]
+        t.goto(x, y)
+
+        # Put the pen back down
+        t.pendown()
+
+        # Write the text at the turtle's position
+        text = answer_district
+        t.write(text, align="center", font=("Arial", 8, "normal"))
+
+    else:
+        print(answer_district.title())
+
 # TODO: Write correct guesses onto the map (Turtle position on right guess)
 # TODO: Use a loop that allows continuous guessing. (While gameOn)
 # TODO: Record the correct guesses in a list (create entry, no doubles allowed)
 # TODO: Keep track of the score (count the correct entries)
 
-while (game_on):
-    answer_district = screen.textinput(title="Rate die Bezirke", prompt="Welche Bezirke gibt es noch?")
-    if answer_district is None:
-        game_on = False
-    else:
-        print(answer_district.title())
 
 # Show map with solution
 show_picture(picture_path="./Maps/vienna_de17.gif")
